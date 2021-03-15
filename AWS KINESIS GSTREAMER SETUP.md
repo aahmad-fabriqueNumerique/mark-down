@@ -167,6 +167,25 @@ Nox you should execute  `gst-inspect-1.0 kvssink `  and you should get informati
 If the build failed, or GST_PLUGIN_PATH is not properly set you will get output like:
 `No such element or plugin 'kvssink'`
 
+** Run the GStreamer on Ubuntu **
+You can run the GStreamer example application on Ubuntu with the following command. Specify your camera device with the device parameter.
+```sh
+$ gst-launch-1.0 v4l2src device=/dev/video0 ! videoconvert ! video/x-raw,format=I420,width=640,height=480 ! x264enc bframes=0 key-int-max=45 bitrate=512 tune=zerolatency ! h264parse ! video/x-h264,stream-format=avc,alignment=au,profile=baseline ! kvssink stream-name="MyKinesisVideoStream" storage-size=512 access-key="YourAccessKey" secret-key="YourSecretKey" aws-region="YourAWSRegion"
+```
+** Run the GStreamer on Windows **
+You can run the GStreamer example application on Windows with the following command:
+```sh
+$ gst-launch-1.0 ksvideosrc ! videoconvert ! video/x-raw,format=I420,width=640,height=480 ! x264enc bframes=0 key-int-max=45 bitrate=512 tune=zerolatency ! h264parse ! video/x-h264,stream-format=avc,alignment=au,profile=baseline ! kvssink stream-name="MyKinesisVideoStream" storage-size=512 access-key="YourAccessKey" secret-key="YourSecretKey" aws-region="YourAWSRegion"
+```
+
+
+Run the GStreamer on Raspbian (Raspberry Pi)
+You can run the GStreamer application on Raspbian with the following command. Specify your camera device with the device parameter.
+```sh
+$ gst-launch-1.0 v4l2src device=/dev/video0 ! videoconvert ! video/x-raw,format=I420,width=640,height=480 ! omxh264enc control-rate=2 target-bitrate=512000 periodicity-idr=45 inline-header=FALSE ! h264parse ! video/x-h264,stream-format=avc,alignment=au,profile=baseline ! kvssink stream-name="MyKinesisVideoStream" access-key="YourAccessKey" secret-key="YourSecretKey" aws-region="YourAWSRegion"
+```
+
+
 **Using Element**
 The kvssink element has the following required parameters: 
 
