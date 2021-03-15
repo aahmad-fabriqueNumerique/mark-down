@@ -203,6 +203,7 @@ For examples of common use cases you can look at Example: [Kinesis Video Streams
 ### Sources
 - https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-sdk-cpp.html
 - https://github.com/awslabs/amazon-kinesis-video-streams-producer-sdk-cpp
+- https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/gs-send-data.html
 
 **Free Software, Hell Yeah!**
 
